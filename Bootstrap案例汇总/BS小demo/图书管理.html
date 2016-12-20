@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>  <!--lt 表示 less than  小于-->
+    <!--<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>-->
+    <!--<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>-->
+</head>
+<body class="container">
+
+<header class="page-header">
+    <h1>图书管理</h1>
+</header>
+
+<div class="row">
+
+    <div class="col-lg-3 panel-group" id="accordion">
+
+        <div class="panel panel-default">
+            <div class="panel-heading" id="headingOne">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        计算机类<span class="badge pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse">
+                <div class="list-group">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading"  id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        文学类<span class="badge pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" >
+                <div class="list-group">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                        儿童类<span class="badge pull-right"></span>
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse">
+                <div class="list-group">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-9">
+        <div class="panel panel-info">
+            <div class="panel-heading"></div>
+            <div class="panel-body">
+                <blockquote>
+                    <h1 id="bookName"></h1>
+                    <small id="author"> 作者:</small>
+                </blockquote>
+
+                <div class="col-lg-6">
+                    <img src="img35.jpg" alt="" class="img-responsive img-rounded"/>
+                </div>
+                <div class="col-lg-6">
+                    <p class="h3"  id="jiage">价格：<span class="glyphicon glyphicon-usd"></span></p>
+                    <p class="h3" id="date">出版日期：</p>
+                    <p class="h3" id="type">类别：</p>
+                    <button class="btn btn-primary btn-block btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span>add to cart</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<footer class="text-center navbar-fixed-bottom">&copy;2016<span class="glyphicon glyphicon-copyright-mark"></span></footer>
+
+</body>
+</html>
+
+<script src="dist/jquery-3.1.0.min.js"></script>
+<script src="dist/js/bootstrap.min.js"></script>
+
+<script>
+    //读取json文件的数据
+    //getJSON() 函数打开 json文件, 第一个参数写 文件路径,第二个参数写null,第三个参数是回调函数,并且能携带参数data,表示json文件中的数据
+    //这步 说白了 就是把 json文件中的数据全部拷贝到 当前文件 并且用变量data接收
+
+    var arr1 = [], arr2 = [], arr3 = [];
+//    创建数组来保存不同分类的书籍，这种做法在实际开发中更为实用
+    var num1 = 0, num2 = 0, num3 = 0;
+
+    $.getJSON('books.json',null,function (data) {
+
+        $(data).each(function (index,book) {
+            console.log(index+' ==> '+book);
+            //获取到book对象以后,可以通过 点语法 取出所有书本的信息
+            console.log(book.Title);
+
+            var litag = $("<a href='#' class='list-group-item'></a>");
+            litag.html(book.Title);
+
+            if(book.Category.Id == "1") {
+                arr1[num1++] = book;
+                $("#collapseOne .list-group").append(litag);
+            }else if(book.Category.Id == "2") {
+                arr2[num2++] = book;
+                $("#collapseTwo .list-group").append(litag);
+            }else if(book.Category.Id == "3") {
+                arr3[num3++] = book;
+                $("#collapseThree .list-group").append(litag);
+            }
+
+            litag.on("click", function () {
+                $("#bookName").text(book.Title);
+                $("#author").text(" 作者：" + book.Author);
+                $("#jiage").html("价格：<span class='glyphicon glyphicon-usd'></span> "+book.Price);
+                $("#date").html("出版日期：" + "<code>" + book.PubDate + "</code>");
+                $("#type").text("类别："+book.Category.Name);
+            });
+
+        });
+
+        $("#headingOne span").text(num1);
+        $("#headingTwo span").text(num2);
+        $("#headingThree span").text(num3);
+
+    })
+</script>

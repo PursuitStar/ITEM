@@ -1,0 +1,127 @@
+/*首页*/
+body {
+    font-family: '微软雅黑';
+    background-color: #EEEEEE;
+    margin: 0;
+}
+
+.index-div1 {
+    padding: 20px 0 40px;
+}
+
+.tab1-h2 {
+    font-size: 16px;
+}
+
+.tab1-p {
+    font-size: 12px;
+}
+
+.carousel-inner img {
+    margin: 0 auto;
+}
+
+.media {
+    padding: 0px 20px 50px 0;
+}
+
+.media-heading {
+    padding: 2px 0 18px 0;
+    color: #666;
+}
+
+/*资讯*/
+.info-tab1 {
+    box-shadow: 5px 5px 8px #D0D0D0;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+}
+
+.info-right {
+    background-color: #fff;
+    box-shadow: 5px 5px 8px #D0D0D0;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+}
+
+.info-right-tab1 {
+    padding: 10px;
+}
+
+/*案例*/
+.case-tab1 {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+/*关于*/
+#about h3 {
+    color: #333;
+    font-size: 18px;
+    padding: 20px 0;
+    margin: 0 0 10px 0;
+}
+#about p {
+    line-height: 2;
+    font-size: 13px;
+}
+
+
+/*为了使文字大小合理的适配 每一种屏幕 手动用媒体查询设置*/
+/*小于768px的屏幕*/
+@media screen and (max-width: 768px){
+
+}
+
+/*768~992px之间的屏幕*/
+@media screen and (min-width: 768px){
+    .tab1-h2 {
+        font-size: 22px;
+    }
+    .tab1-p {
+        font-size: 14px;
+    }
+
+    #about h3 {
+        font-size: 19px;
+    }
+    #about p {
+        font-size: 14px;
+    }
+}
+
+/*992~1200px之间的屏幕*/
+@media screen and (min-width: 992px){
+    .tab1-h2 {
+        font-size: 26px;
+    }
+    .tab1-p {
+        font-size: 18px;
+    }
+
+    #about h3 {
+        font-size: 20px;
+    }
+    #about p {
+        font-size: 15px;
+    }
+
+}
+
+/*大于1200px的屏幕*/
+@media screen and (min-width: 1200px){
+    .tab1-h2 {
+        font-size: 32px;
+    }
+    .tab1-p {
+        font-size: 24px;
+    }
+
+    #about h3 {
+        font-size: 22px;
+    }
+    #about p {
+        font-size: 16px;
+    }
+}
