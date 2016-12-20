@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+<div id="box">这是一个div</div>
+<input type="password" placeholder="请输入密码" id="password">
+</body>
+</html>
+<script>
+//    1、mouse族
+    var yes = false;//用于判断鼠标是否按下来决定是否进行div的拖拽
+    var div1 = document.getElementById("box");
+    div1.onmousedown = function () {
+        console.log("鼠标点下");
+        yes = true;
+    };
+    div1.onmouseup = function () {
+        console.log("鼠标放开");
+        yes = false;
+    };
+    div1.onmouseover = function () {
+        console.log("鼠标移入");
+    };
+    div1.onmouseout = function () {
+        console.log("鼠标移出");
+    };
+    div1.onmousemove = function () {
+        var oevent = window.event || arguments[0];
+        if(yes) {
+            div1.style.marginLeft = oevent.clientX - 201 + "px";
+            div1.style.marginTop = oevent.clientY - 201 + "px";
+            console.log("鼠标移动");
+            div1.style.backgroundColor = "#" + parseInt(255 * Math.random()).toString(16) + parseInt(255 * Math.random()).toString(16) + parseInt(255 * Math.random()).toString(16);
+        }
+    };
+
+//    2、键盘族
+//    onkeyup       按下某键抬起的时候触发
+//    onkeydown     按下某键的时候触发
+//    onkeypress    按下某键的时候触发(其实是压着的时候触发，但是使用 onkeypress 不能获取 Backspace 键)
+    document.getElementById("password").onkeydown = function () {
+        console.log("按下" + arguments[0].key);
+//        用户在键盘上输入的内容都会保存在arguments数组里（注意的是用户按下两次是指两次调用函数，每次arguments数组里只有一个元素）
+//        通过 key属性 拿到该键的键值，通过 keyCode 属性拿到该键的键盘码
+        console.log(arguments[0].currentTarget);
+//        返回当前处理事件的元素文档或窗口
+    };
+</script>

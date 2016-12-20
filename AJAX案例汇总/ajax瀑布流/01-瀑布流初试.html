@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--下面这句话自己加的-->
+    <meta name="viewport" content="width=device-width">
+    <style>
+        ul {
+            list-style: none;
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            float: left;
+        }
+        li div {
+            margin: 15px;
+            width: 360px;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+<input type="range" min=0 max=20 value=0 id="range">
+<ul></ul>
+<script src="jquery-3.1.0.min.js"></script>
+<script>
+
+    var htmls = "";
+    var ul = document.querySelector("ul");
+    for(var i = 0; i < 20; i++) {
+        var h = Math.random() * 200 + 200;
+        htmls += "<li><div style='height: "+h+"px'><img src='images/img"+(i+1)+".jpg'></div></li>";
+        ul.innerHTML = htmls;
+    }
+    function xiabiao(array, minvalue) {
+        for(var i = 0; i < array.length; i++) {
+            if(array[i] == minvalue) {
+                return i;
+            }
+        }
+
+    }
+    function paixu() {
+        var heightArr = [];//创建空数组用于存放每列的高度
+        var liList = document.querySelectorAll("li");
+        var liwidth = liList[0].offsetWidth;//单个li的宽度
+        console.log(liwidth);
+        var contenetWidth = document.documentElement.offsetWidth;//内容宽度
+        console.log(contenetWidth);
+        var num = parseInt(contenetWidth / liwidth);//列数
+        console.log(num);
+        for(var i = 0; i < liList.length; i++) {
+            if(i < num) {
+                heightArr[i] = liList[i].offsetHeight;//开始每列的高度就是第一行相对应的li的高度
+                liList[i].style.position = "static";//设置第一行的li的定位为静态（它们不需要动）
+            }else {
+                var minvalue = Math.min.apply({}, heightArr);//找到最小高度列
+                var index = xiabiao(heightArr, minvalue);
+                liList[i].style.position = "absolute";
+                liList[i].style.left = index * liwidth + "px";
+                liList[i].style.top = minvalue + "px";
+                heightArr[index] += liList[i].offsetHeight;
+            }
+        }
+    }
+    paixu();
+    window.onresize = function () {
+        paixu();
+    };
+
+
+    $(window).scroll(function () {
+        var bodyHeight = $(document).height();
+        var windowHeight = $(window).height();
+        var scrollHeight = $(window).scrollTop();
+        if(0.9 * bodyHeight <= windowHeight + scrollHeight) {
+            $.ajax({
+                url : "01-Pinterest.php",
+                type : "get",
+                dataType : "json",
+                success : function (message) {
+                    var newLi = "";
+                    for(var key in message) {
+                        newLi += "<li><div style='height: "+message[key]+"px'><img src='images/img"+key+".jpg'></div></li>";
+                    }
+                    $("ul").append(newLi);
+                    paixu();
+
+                }
+            });
+        }
+    });
+
+
+    //自己加着玩，滑动滑块，改变图像的模糊度（结合CSS3的 filter[滤镜] 属性）
+    $("#range").bind("input",function () {
+        var blurValue = this.value;
+        $("img").css("filter","blur("+blurValue+"px)");
+    })
+</script>
+</body>
+</html>
