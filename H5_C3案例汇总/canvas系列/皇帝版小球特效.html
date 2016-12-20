@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="600px" height="600px" style="background-color:lightcyan;">
+    不支持画板功能
+</canvas>
+<button id="btn">绘图</button>
+<script>
+    var canvas = document.getElementById("canvas");
+    var btn = document.getElementById("btn");
+    var context=canvas.getContext("2d");
+    var cX,cY,pi = 0,r =250,i=0;
+    context.translate(270,270);
+    function xuanzuan() {
+        context.beginPath();
+        cX=Math.sin(pi)*r+40;
+//        console.log("x"+cX);
+        cY=Math.cos(pi)*r+40;
+//        console.log("y"+cY);
+        context.arc(cX,cY,10,0,Math.PI*2);
+        context.fillStyle="blue";
+        context.fill();
+        context.closePath();
+    }
+    var t=setInterval(function () {
+        pi+=1;
+
+        r--;
+        if (r<=-0) {
+            clearInterval(t);
+//            r=250
+        }
+        xuanzuan()
+    },10)
+</script>
+</body>
+</html>

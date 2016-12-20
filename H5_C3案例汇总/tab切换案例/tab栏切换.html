@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-3.1.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .bx {
+            width: 1002px;
+            margin: 100px auto;
+        }
+        .banner {
+            position: relative;
+            width: 320px;
+            height:14px;
+            border: 1px solid #D5D5D5;
+            border-bottom: 0;
+            padding: 14px 0 8px 0;
+        }
+        .l_border {
+            border-left: 1px solid #D5D5D5;
+        }
+        ul li {
+            float: left;
+            width: 61px;
+            height: 14px;
+            font: 14px/14px "黑体";
+            padding: 0 8px 0 10px;
+            cursor: pointer;
+        }
+        .line {
+            display: none;
+            width: 80px;
+            height: 4px;
+            background-color: #FE0007;
+            position: absolute;
+            top: 0;
+        }
+        .pic {
+            border: 1px solid #D5D5D5;
+            width: 1000px;
+            height: 475px;
+            background: url("01%20tab切换案例/imgs/guojidapai.jpg") no-repeat;
+        }
+    </style>
+    <script>
+        $(function () {
+            var arr = ["01%20tab切换案例/imgs/guojidapai.jpg", "01%20tab切换案例/imgs/guozhuangmingpin.jpg", "01%20tab切换案例/imgs/nanshijingpin.jpg", "01%20tab切换案例/imgs/qingjieyongpin.jpg"];
+
+            $.each($("li"), function (i) {
+                $(this).click(function () {
+                    $(".pic").css("background", "url(" + arr[i] + ")");
+                    $(".line").css({
+                        "left": i * 80 + "px",
+                        display : "block"
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="bx">
+<div class="banner">
+    <div class="line"></div>
+    <ul>
+        <li>国际大牌</li>
+        <li class="l_border">国装名品</li>
+        <li class="l_border">男士精品</li>
+        <li class="l_border">清洁用品</li>
+    </ul>
+</div>
+<div class="pic"></div>
+</div>
+</body>
+</html>

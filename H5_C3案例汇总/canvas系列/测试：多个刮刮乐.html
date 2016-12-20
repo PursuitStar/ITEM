@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas data-index = 0 style="background-color: cyan" width="300px" height="200px" id="canvas1"></canvas>
+<canvas data-index = 1 style="background-color: cyan" width="300px" height="200px" id="canvas2"></canvas>
+</body>
+</html>
+<script>
+    var canvas1 = document.querySelector("#canvas1");
+    var context1 =canvas1.getContext("2d");
+
+    var canvas2 = document.querySelector("#canvas2");
+    var context2 =canvas2.getContext("2d");
+
+    var arr = ["url('谢谢惠顾.jpg') no-repeat center", "url('中奖图片.jpg') no-repeat center"];
+
+    play(canvas1, context1);
+    play(canvas2, context2);
+
+    function play(x, y) {
+        x.style.background = arr[parseInt(Math.random()*1000) % 2];
+
+        y.beginPath();
+        y.fillStyle = "yellow";
+        y.fillRect(0, 0, 300, 200);
+        y.closePath();
+
+        y.globalCompositeOperation = "destination-out";
+        x.onmousedown = function () {
+            x.onmousemove = function (event) {
+                y.beginPath();
+                y.fillStyle = "red";
+                //值得注意的是：鼠标的clientX/clientY 都是相对于页面左上角的位置，而我们在画布中绘制的图形位置都是依据画布原点坐标的。
+                //所以这里要对 arc() 里面的x , y两个参数做一定操作，将鼠标相对页面的位置转化为 相对于画布的位置
+                y.arc(event.clientX - x.dataset.index * 300, event.clientY, 10, 0, Math.PI);
+                y.fill();
+                y.closePath();
+            };
+            x.onmouseup = function () {
+                x.onmousemove = null;
+            };
+        };
+
+    }
+</script>

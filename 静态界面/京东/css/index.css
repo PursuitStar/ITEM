@@ -1,0 +1,330 @@
+/*logo搜索那一栏*/
+.logo-search-cart {
+    margin-top: 25px;
+}
+.logo-search-cart .logo {
+    /*270+90,270是logo图的宽*/
+    width: 360px;
+    height: 60px;
+    padding: 10px 0;
+    position: relative;
+
+}
+.double11 {
+    position: absolute;
+    display: block;
+    width: 180px;
+    height: 80px;
+    left: 169px;
+    top: -8px;
+}
+.search {
+    width: 538px;
+    height: 36px;
+    /*border: 1px solid black;*/
+    /*margin-left: 90px;*/
+}
+.search input {
+    width: 451px;
+    border: 2px solid #B61D1D;
+    height: 32px;
+    padding-left: 3px;
+    font: 400 12px/32px "Microsoft YaHei";
+    float: left;
+}
+.search button {
+    width: 80px;
+    height: 36px;
+    background-color: #B61D1D;
+    float: left;
+    font: 400 16px/36px "SimSun", "Microsoft YaHei";
+    color: white;
+    /*这个鼠标是放上去变成一个小手*/
+    cursor: pointer;
+}
+.hotwords {
+    float: left;
+    margin-top: 6px;
+}
+.hotwords a {
+    color: #666;
+    font: 400 10px/10px "Microsoft YaHei";
+    margin-right: 7px;
+}
+
+.cart {
+    height: 34px;
+    padding: 0 32px 0 44px;
+    border: 1px solid #DFDFDF;
+    margin-right: 63px;
+    position: relative;
+
+}
+.cart a {
+    display: block;
+    height: 34px;
+    font: 400 12px/34px "Microsoft YaHei";
+    color: #666666;
+
+}
+.cart .icon {
+    position: absolute;
+}
+.cart .icon1 {
+    width: 18px;
+    height: 16px;
+    background: url("../images/sprite.png") no-repeat 0 -90px;
+    /*44-18=26/2=13*/
+    left: 13px;
+    top: 9px;
+}
+.cart .icon3 {
+    width: 16px;
+    height: 14px;
+    background-color: #C81623;
+    color: white;
+    border-radius: 7px 7px 7px 0;
+    right: 20px;
+    top: -4px;
+    text-align: center;
+    line-height: 14px;
+}
+.cart .icon2 {
+    top: 12px;
+    right: 10px;
+    width: 7px;
+    height: 13px;
+    overflow: hidden;
+    font: 400 13px/13px simsun;
+    color: #999;
+}
+
+/*logo-搜索那一栏结束*/
+/*导航一栏*/
+.nav {
+    /*height: 44px;*/
+}
+.nav .dropdown {
+    height: 44px;
+    width: 210px;
+    background-color: #B1191A;
+    color: white;
+    font: 700 16px/44px "Microsoft YaHei";
+    /*padding-left: 10px;*/
+
+}
+.dropdown .dt {
+    padding-left: 10px;
+}
+.dropdown .dd {
+    /*这是为了显示出2px的border,不然就压住了*/
+    margin-top: 2px;
+    position: relative;
+    z-index: 10;
+}
+.dropdown .dd div{
+    background-color: #C81623;
+    width: 194px;
+    height: 31px;
+    font: 400 12px/31px "Microsoft YaHei";
+    padding: 0 6px 0 10px;
+}
+.dropdown .dd h3 {
+    /*这里可以修改相应的字体*/
+    float: left;
+}
+.dropdown .dd h3 a {
+    font: 400 12px/31px "Microsoft YaHei";
+    color: white;
+}
+.dropdown .dd span {
+    /*这里可以修改相应的字体*/
+    float: right;
+}
+
+.nav .nav-items li {
+    float: left;
+}
+.nav .nav-items li a {
+    display: block;
+    height: 44px;
+    padding: 0 20px;
+    text-align: center;
+    font: 400 14px/44px "Microsoft YaHei";
+    color: #7B7B7B;
+}
+.nav .nav-items li a:hover {
+    color: #C81623;
+}
+
+.logo-search-cart-nav {
+    border-bottom: 2px solid #B1191A;
+}
+
+.new {
+    background: url("../images/new.jpg") no-repeat top right;
+}
+
+/*导航一栏结束*/
+/*大背景图片开始*/
+.banner603{
+    position: relative;
+
+}
+.banner603 a{
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 603px;
+    background: url("../images/banner.jpg") no-repeat top center;
+}
+/*大背景图片结束*/
+
+
+/*轮播图模块*/
+.main {
+    margin: 11px 0 6px 0;
+    padding-left: 220px;
+}
+.main .slider {
+    position: relative;
+}
+.slider ul {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -78px;
+}
+.slider ul li {
+    float: left;
+}
+.slider ul li a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0 3px;
+    background-color: black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+    color: white;
+}
+/*交集*/
+.slider ul li a.current {
+    background-color: #B1191A;
+}
+.arrow2{
+    position: absolute;
+    display: block;
+    width: 28px;
+    height: 62px;
+    /*rgba 这里的a就是aplha,表示透明度一般都在0到1之间*/
+    background-color: rgba(z);
+    top: 50%;
+    margin-top: -31px;
+    font: 400 16px/62px "SimSun";
+    text-align: center;
+    color: white;
+}
+.slider .arrow-pre {
+    left: 0;
+}
+.slider .arrow-next {
+    right: 0;
+}
+.arrow2:hover{
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+}
+
+/*这是京东快报和生活服务模块*/
+.news-service {
+    width: 248px;
+    height: 452px;
+    border: 1px solid #E4E4E4;
+    /*border-bottom-width: 0;*/
+    position: relative;
+    z-index: 10;
+}
+.jd-news .dt,
+.life-service .dt {
+    height: 42px;
+    font: 400 12px/42px "Microsoft YaHei";
+    border-bottom: 1px dotted #E4E4E4;
+    padding-left: 16px;
+}
+.jd-news .dd {
+    border-bottom: 1px dashed #E4E4E4;
+}
+.jd-news .dd span {
+    font-weight: 700;
+}
+.jd-news .dd li {
+    font: 400 12px/28px "Microsoft YaHei";
+    padding-left: 16px;
+}
+.life-service .dd {
+    width: 248px;
+}
+.life-service .dd li {
+    float: left;
+    width: 61px;
+    /*height: 30px;*/
+    border: 1px solid #E4E4E4;
+    /*border-left-width: 0;*/
+    /*border-top-width: 0;*/
+    margin-left: -1px;
+    margin-top: -1px;
+    /*padding-top: 45px;*/
+}
+.life-service .dd li a {
+    display: block;
+    width: 61px;
+    height: 30px;
+    padding-top: 45px;
+    text-align: center;
+    position: relative;
+
+}
+.life-service .dd li a i {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 15px;
+    left: 18px;
+    background: url("../images/icon_lifeserv.png") no-repeat -25px 0;
+}
+.life-service .dd .no-bottom {
+    /**/
+    border-bottom-width: 0;
+}
+.life-service .dd li:nth-child(4n){
+    border-right-width: 0;
+}
+.song {
+    background: url("../images/song.png") no-repeat right top;
+}
+
+
+/*11 huodong*/
+.todays {
+    position: relative;
+}
+.night {
+    margin: 10px 0 28px 0;
+}
+.night-r {
+    width:1000px;
+    height: 160px;
+    float: right;
+}
+.night-r ul {
+    width: 500%;
+    _width: 400%;
+}
+.night-r li {
+    float: left;
+    margin-right: 1px;
+}

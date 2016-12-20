@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*绘制立方体的原理*/
+        /*01 立方体有6个面
+          02 可以把六个面放到对应位置，以实现立方体绘制。如何放 就利用旋转平移*/
+
+        /*01 通用属性设置*/
+        .wrap div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /*利用定位把每个面先叠加到一起*/
+            position: absolute;
+            top: 40%;
+            left: 40%;
+
+            /*字体设置*/
+            font-size: 100px;
+            text-align: center;
+            line-height: 200px;
+            color: white;
+            text-shadow: 0 0 10px green;
+        }
+
+        /*02 确定 对每个面的位置*/
+        /*旋转法则：旋转角度为正数的时候符合 左手螺旋法则*/
+        /*大拇指指向旋转轴的正方向，四指指向的方向就是旋转的方向*/
+        /*顶部*/
+        .wrap div:nth-child(1){
+            background-color: orange;
+            transform-origin: top;
+            transform: rotateX(90deg);
+        }
+
+        /*底部*/
+        div:nth-child(2){
+            background-color: yellow;
+            transform-origin: bottom;
+            transform: rotateX(270deg);
+        }
+
+        /*左边*/
+        div:nth-child(3){
+            background-color: green;
+            transform-origin: left;
+            transform: rotateY(270deg);
+        }
+
+        /*右边*/
+        div:nth-child(4){
+            background-color: blue;
+            transform-origin: right;
+            transform: rotateY(90deg);
+        }
+
+        /*里面*/
+        div:nth-child(5){
+
+        }
+
+        /*外面*/
+        div:nth-child(6){
+            background-color: purple;
+            transform: translateZ(200px);
+        }
+
+        /*到这里 立方体 绘制完毕*/
+
+        /*开启3D效果*/
+        .wrap{
+            margin: 200px;
+            transform-style: preserve-3d;
+
+            transition: transform 20s;
+        }
+
+        .wrap:hover{
+            transform: rotateX(2000deg) rotateY(2000deg) rotateZ(2000deg) translate(100px,100px);
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+</div>
+
+</body>
+</html>

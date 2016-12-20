@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        svg {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            background-color: transparent;
+            /*background: lightpink url("jiaqing.jpg") no-repeat center;*/
+        }
+        #svg2 {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<svg id="svg1">
+    <image height="300" xlink:href="jiaqing.jpg" width="400"></image>
+    <!--<rect x="0" y="0" height="100" width="100" fill="cyan" id="rect"></rect>-->
+</svg>
+<svg id="svg2">
+    <image height="300" xlink:href="jiaqing.jpg" width="400"></image>
+    <!--<rect x="0" y="0" height="100" width="100" fill="cyan"></rect>-->
+</svg>
+</body>
+</html>
+<script>
+    var svg1 = document.querySelector("#svg1");
+    var svg2 = document.querySelector("#svg2");
+    var move = document.querySelector("#move");
+
+    svg1.onmousemove = function (event) {
+        svg2.style.display = "block";
+        var x = event.clientX-40;
+        var y = event.clientY-40;
+
+        //添加限定条件，鼠标移到一定区域外，显示的内容不改变（防止显示空白区域）
+        if(event.clientX <= 55) {x = 15;}
+        if(event.clientX >= 340) {x = 300;}
+        if(event.clientY <= 40) {y = 0;}
+        if(event.clientY >= 260) {y = 220;}
+
+
+        svg2.setAttribute("viewBox",x+" "+y+" 80 80");
+//
+    };
+    svg1.onmouseout = function () {
+        svg2.style.display = "none";
+    };
+
+
+</script>

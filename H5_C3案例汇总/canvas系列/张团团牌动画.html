@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="canvas" width="300px" height="300px" style="background-color:cyan"></canvas>
+<button onclick="huizhi()">笨蜗牛</button>
+</body>
+<script>
+    var canvas = document.querySelector("#canvas");
+    var context =canvas.getContext("2d");
+
+    function huizhi(){
+        context.beginPath();
+        //第一个正方形
+        context.translate(150,30);
+        context.fillStyle = "lightpink";
+        context.fillRect(0,0,100,50);
+        context.closePath();
+
+        var timer = setInterval(function (){
+            context.beginPath();
+            //需要平移坐标系，此时是参考之前平移过的坐标系
+            context.translate(25,25);
+            //缩放：在之前缩放的基础上进行缩放
+            context.scale(0.95,0.95);
+            //旋转：在之前的基础上旋转
+            context.rotate(Math.PI/10);
+            context.fillStyle = "lightpink";
+            //每次都是画fillRect(0,0,100,50)，因为三个值都在之前累积起来了
+            context.fillRect(0,0,100,50);
+            context.closePath();
+        },100);
+//         清除定时器
+        function stop(){
+            clearInterval(timer);
+        }
+//         在一定时间之后清除定时器
+        setTimeout(stop,8000);
+    }
+
+
+
+
+</script>
+</html>

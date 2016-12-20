@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-3.1.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            margin: 100px auto;
+            width: 752px;
+            height: 270px;
+            border: 1px solid #C1C1C1;
+            padding: 10px 0 0 10px;
+        }
+        ul {
+            list-style: none;
+        }
+        .box ul li {
+            cursor: pointer;
+            width: 178px;
+            height: 125px;
+            float: left;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            position: relative;
+        }
+        .dibu {
+            position: absolute;
+            background-color: rgba(108, 108, 108, 0.5);
+            bottom: 0;
+            width: 178px;
+            height: 25px;
+            font: 13px/25px "黑体";
+            color: white;
+            text-align: center;
+            display: none;
+        }
+        span {
+            position: absolute;
+            left: 5px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            var arr = ["02%20仿网址导航案例/images/01.JPG", "02%20仿网址导航案例/images/02.JPG", "02%20仿网址导航案例/images/03.JPG", "02%20仿网址导航案例/images/04.JPG", "02%20仿网址导航案例/images/05.JPG", "02%20仿网址导航案例/images/06.JPG", "02%20仿网址导航案例/images/07.JPG", "02%20仿网址导航案例/images/08.JPG"];
+
+            $.each($("li"), function (index) {
+                $(this).css("background", "url(" + arr[index] + ")");
+
+                $(this).mouseenter(function () {
+                    var y = - 4 -index * 25;
+                    $("span").eq(index).css("background", "url(02%20仿网址导航案例/images/bg.png) no-repeat 0" + y + "px");
+                    $("div").eq(index + 1).stop().slideDown(500);
+                }).mouseleave(function () {
+                    $("div").eq(index + 1).stop().slideUp(500);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="box">
+    <ul>
+        <li><div class="dibu"><span></span>百度一下，你就知道</div></li>
+        <li><div class="dibu"><span></span>淘宝网</div></li>
+        <li><div class="dibu"><span></span>新浪网</div></li>
+        <li><div class="dibu"><span></span>网易</div></li>
+        <li><div class="dibu"><span></span>搜狐</div></li>
+        <li><div class="dibu"><span></span>腾讯</div></li>
+        <li><div class="dibu"><span></span>优酷</div></li>
+        <li><div class="dibu"><span></span>京东</div></li>
+    </ul>
+</div>
+</body>
+</html>

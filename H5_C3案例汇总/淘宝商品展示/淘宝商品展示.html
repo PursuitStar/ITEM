@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        div {
+            margin: 80px auto;
+            width: 360px;
+            height: 70px;
+            padding-top: 360px;
+            border: 1px solid black;
+            overflow: hidden;
+            /*overflow: scroll;页面上的滚轮就是这样来的*/
+            background: url("鼠标展示/01big.jpg") no-repeat;
+
+        }
+        div ul li {
+            float: left;
+            border-top: 1px solid black;
+        }
+        .one {
+            padding-left: 2.5px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li title="鼠标展示/01big.jpg" id="li1"><img src="鼠标展示/01.jpg"></li>
+        <li title="鼠标展示/02big.jpg" id="li2" class="one"><img src="鼠标展示/02.jpg"></li>
+        <li title="鼠标展示/03big.jpg" id="li3" class="one"><img src="鼠标展示/03.jpg"></li>
+        <li title="鼠标展示/04big.jpg" id="li4" class="one"><img src="鼠标展示/04.jpg"></li>
+        <li title="鼠标展示/05big.jpg" id="li5" class="one"><img src="鼠标展示/05.jpg"></li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    function $(id) {return document.getElementById(id);}
+//    var arr = document.getElementsByTagName("li");
+//    console.log(arr);
+//    for(var i = 0; i < 4; i++) {
+//        arr[i].onmouseover = function (){
+//            $("box").style.backgroundImage="url(" + arr[i].getAttribute("title") + ")";
+//        };
+//    }  好像错了 ，只能切换一次
+
+//    var arr = ["li1", "li2", "li3", "li4", "li5"];
+//    console.log(arr);
+//    for(var i = 0; i < arr.length; i++) {
+//        $(arr[i]).onmouseover = function () {
+//            var src = $(arr[i]).getAttribute("title");
+//            $("box").style.backgroundImage="url("+ src +")";
+//        };
+//    }//好像用了 for 循环就会出错
+//    下面是老师的代码
+    function init(id) {
+        $(id).onmouseover = function () {
+            var src = $(id).getAttribute("title");
+            $("box").style.backgroundImage="url("+ src +")";
+        };
+    }
+    init("li1");
+    init("li2");
+    init("li3");
+    init("li4");
+    init("li5");
+</script>

@@ -1,0 +1,305 @@
+@charset "UTF-8";
+/*css 初始化 */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img {
+     margin: 0;
+     padding: 0;
+ }
+
+fieldset, img, input, button {
+    border: none;
+    padding: 0;
+    margin: 0;
+    /*表单元素默认没法修改*/
+    outline-style: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+input {
+    padding-top: 0;
+    padding-bottom: 0;
+    font-family: "SimSun", "宋体",sans-serif;
+}
+
+select, input {
+    vertical-align: middle;
+}
+
+select, input, textarea {
+    font-size: 12px;
+    margin: 0;
+}
+textarea {
+    resize: none;
+}
+
+/*防止拖动*/
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+/*  去掉图片低测默认的3像素空白缝隙*/
+table {
+    border-collapse: collapse;
+}
+
+body {
+    font: 12px/150% Arial, Verdana, "\5b8b\4f53";
+    color: #666;
+    background: #fff
+}
+/*相当于内墙法,*/
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1; /*IE/7/6*/
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #C81623;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+/*钩子*/
+s, i, em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+.col-red {
+    color: #C81623 !important;
+}
+
+/*公共类*/
+.w {
+    /*版心 提取 */
+    width: 1210px;
+    margin: 0 auto;
+}
+
+.fl {
+    float: left
+}
+
+.fr {
+    float: right
+}
+
+.al {
+    text-align: left
+}
+
+.ac {
+    text-align: center
+}
+
+.ar {
+    text-align: right
+}
+
+.hide {
+    display: none
+}
+/*头部开始*/
+.header {
+    height: 30px;
+    background-color: #F1F1F1;
+    line-height: 30px;
+    width: 100%;
+
+}
+.header .fr li {
+     float: left;
+     margin: 0 5px;
+ }
+ .header .fr .line {
+    width: 1px;
+    height: 12px;
+    background-color: #DDDDDD;
+    margin-top: 9px;
+
+}
+.header .dt
+{
+    padding-right: 15px;
+    position: relative;
+}
+.fore {
+    position: relative;
+    padding-right: 15px;
+}
+.header .dt i,
+.fore i{
+    position: absolute;
+    font: 400 15px/15px "SimSun";
+    height: 7px;
+    overflow: hidden;
+    width: 15px;
+    /*background-color: red;*/
+    top: 12px;
+
+}
+.header .dt s,
+.fore s{
+    position: absolute;
+    left: 0;
+    top: -8px;
+}
+/*写手机京东的手机*/
+.header .tel-jd {
+    padding-left: 20px;
+}
+.tel-jd .tel {
+    display: block;
+    width: 15px;
+    height: 20px;
+    background: url("../images/sprite.png") no-repeat 0 0;
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+.tel:hover {
+    background-position-y: -25px;
+}
+
+/*头部结束*/
+/*顶部通栏*/
+.topbanner {
+    background-color: #8A25C6;
+}
+.top-banner {
+    height: 80px;
+    background: url("../images/topbanner.jpg") no-repeat center;
+    position: relative;
+}
+.top-banner .close {
+    position: absolute;
+    width: 19px;
+    height: 19px;
+    display: block;
+    background: url("../images/close.png") no-repeat 0 0;
+    right: 0;
+    top: 5px;
+}
+.close:hover {
+    /*background-position: 0 -19px;*/
+    background-position-y: -19px;
+}
+/*通栏结束*/
+
+
+
+/*京东底部*/
+.slogen {
+    height: 54px;
+    padding: 20px 0;
+    background-color: #F5F5F5;
+    position: relative;
+}
+.slogen .item {
+    width: 302px;
+    position: absolute;
+    left: 50%;
+}
+.slogen1 {
+    margin-left: -604px;
+}
+.slogen2 {
+    margin-left: -302px;
+}
+.slogen3 {
+    margin-left: 0;
+}
+.slogen4 {
+    margin-left: 302px;
+}
+/*购物指南那一块*/
+.shopping {
+    padding-bottom: 32px;
+    border-bottom: 1px solid #E6E6E6;
+}
+.shopping dl {
+    float: left;
+    width: 198px;
+    margin-top: 21px;
+}
+
+.shopping dt,
+.coverage .dt
+{
+    /*font: 400 15px/27px "Microsoft YaHei", "SimSun";*/
+    padding: 0 0 6px 0;
+    font: 400 16px/24px "microsoft yahei";
+    height: 24px;
+    /*color: ;*/
+}
+.shopping dd
+{
+    font: 400 12px/20px "SimSun";
+    height: 20px;
+}
+/*京东自营覆盖区县*/
+.coverage {
+    width: 190px;
+    margin-top: 15px;
+    padding-top: 6px;
+    height: 158px;
+    padding-left: 11px;
+    background: url("../images/china.png") no-repeat left bottom;
+}
+.coverage .dt {
+    margin-bottom: 19px;
+}
+.coverage .dd {
+    height: 18px;
+    font: 400 12px/18px "SimSun";
+}
+.looklook {
+    text-align: right;
+}
+.looklook span {
+    font-family: "Microsoft YaHei", sans-serif;
+    font-weight: 100;
+}
+
+/*版权声明那一块*/
+.copyright {
+    text-align: center;
+}
+.copyright .links {
+    margin-top: 23px;
+    margin-bottom: 12px;
+}
+.links a {
+    margin: 0 6px;
+    font-size: 12px;
+}
+.gonganju {
+    line-height: 20px;
+}
+.message {
+    margin: 8px 0 32px 0;
+}
+.message a {
+    margin-right: 13px;
+}

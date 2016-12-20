@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>planet</title>
+    <style>
+        html,body{ margin: 0; padding: 0;}
+    </style>
+</head>
+<body>
+<div style="width:800px; height:600px; position:relative; margin:30px auto;">
+    <canvas id="canvas" style="border:1px solid #ddd; display:block; position:absolute; top:0; left:0; z-index:2;"></canvas>
+    <canvas id="canvas2" style="border:1px solid #ddd; display:block; position:absolute; top:0; left:0; z-index:1;"></canvas>
+    <canvas id="canvas3" style="border:1px solid #ddd; display:block; position:absolute; top:0; left:0; z-index:0;"></canvas>
+</div>
+<script type="text/javascript">
+    window.onload=function(){
+        var width=800;
+        var height=600;
+        var canvas=getById("canvas");
+        var canvas2=getById("canvas2");
+        var canvas3=getById("canvas3");
+        var context=canvas.getContext("2d");
+        var context2=canvas2.getContext("2d");
+        var context3=canvas2.getContext("2d");
+        canvas.width=width;
+        canvas.height=height;
+        canvas2.width=width;
+        canvas2.height=height;
+        canvas3.width=width;
+        canvas3.height=height;
+        drawSun(context,width,height); //绘制太阳
+
+        var earth={
+            r:5,
+            mr:70,
+            cy:600,
+            color:"#5990B9"
+        }
+
+        var jupiter={
+            r:10,
+            mr:250,
+            cy:5000,
+            color:"#AF6B2C"
+        }
+
+        drawMovePlanet(context,context2,context3,earth,jupiter,width,height);
+    }
+
+    function getById(id){
+        return document.getElementById(id);
+    }
+
+    function drawSun(ctx,wd,ht){
+        var r=30;
+        var x=wd/2;
+        var y=ht/2;
+        ctx.beginPath();
+        ctx.fillStyle = "#FFA200";
+        ctx.arc(x, y,r, 0, Math.PI * 2, true);
+        ctx.closePath();
+        ctx.fill();
+    }
+
+    function drawMovePlanet(ctx,ctx2,ctx3,planet1,planet2,wd,ht){
+        var x=wd/2;
+        var y=ht/2;
+        var handle;
+        var times=490;
+        var time=0;
+        //行星1
+        var r1=planet1.r;
+        var mr1=planet1.mr;
+        var cy1=planet1.cy;
+        var color1=planet1.color;
+        var angle1=0;
+        var radian1=0;
+        var cd1="";
+        var old1={x:x+mr1,y:y-mr1,r:r1};
+        //行星2
+        var r2=planet2.r;
+        var mr2=planet2.mr;
+        var cy2=planet2.cy;
+        var color2=planet2.color;
+        var angle2=0;
+        var radian2=0;
+        var cd2="";
+        var old2={x:x+mr2,y:y-mr2,r:r2};
+
+        //绘制轨道
+        ctx2.strokeStyle=color1;
+        ctx2.beginPath();
+        ctx2.arc(x, y, mr1, 0, Math.PI * 2, true);
+        ctx2.closePath();
+        ctx2.stroke();
+
+        ctx2.strokeStyle=color2;
+        ctx2.beginPath();
+        ctx2.arc(x, y, mr2, 0, Math.PI * 2, true);
+        ctx2.closePath();
+        ctx2.stroke();
+
+
+        //定时器
+        handle=setInterval(function(){
+//            if(time>times){
+//                clearInterval(handle);
+//            }else{
+                time++;
+                cd1=coordinate(mr1,radian1,x,y);
+                ctx.clearRect(old1.x-r1-1,old1.y-r1-1,2*r1+2,2*r1+2);
+                old1={x:cd1.x,y:cd1.y};
+                angle1+=3600/cy1;
+                radian1=2*Math.PI/360*angle1;
+                ctx.beginPath();
+                ctx.fillStyle = color1;
+                ctx.arc(cd1.x, cd1.y, r1, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.fill();
+
+                cd2=coordinate(mr2,radian2,x,y);
+                ctx.clearRect(old2.x-r2-1,old2.y-r2-1,2*r2+2,2*r2+2);
+                old2={x:cd2.x,y:cd2.y};
+                angle2+=3600/cy2;
+                console.log(angle2);
+                radian2=2*Math.PI/360*angle2;
+                ctx.beginPath();
+                ctx.fillStyle = color2;
+                ctx.arc(cd2.x, cd2.y, r2, 0, Math.PI * 2, true);
+                ctx.closePath();
+                ctx.fill();
+
+                ctx3.beginPath();
+                ctx3.strokeStyle = "#FF5D5D";
+                ctx3.moveTo(cd1.x,cd1.y);
+                ctx3.lineTo(cd2.x,cd2.y);
+                ctx3.closePath();
+                ctx3.stroke();
+//            }
+        },60)
+
+    }
+
+
+    function coordinate(mr,angle,a,b){
+        var x=a+mr*Math.cos(angle);
+        var y=b+mr*Math.sin(angle);
+        return {x:x,y:y};
+    }
+
+</script>
+</body>
+</html>

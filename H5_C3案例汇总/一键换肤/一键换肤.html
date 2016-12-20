@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: url("蓝色背景.jpg") top center;
+        }
+        .box {
+            height: 150px;
+            background: rgba(255, 255, 255, 0.3);
+            text-align: center;
+            padding-top: 50px;
+        }
+        img {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="蓝色背景.jpg" alt="" width="150" id="pic1"/>
+        <img src="黄色背景.jpg" alt="" width="150" id="pic2"/>
+        <img src="灰色背景.jpg" alt="" width="150" id="pic3"/>
+    </div>
+</body>
+</html>
+<script>
+    function $(id) {return document.getElementById(id);}
+    $("pic1").onclick = function () {
+      document.body.style.backgroundImage = "url(蓝色背景.jpg)";
+    };
+    $("pic2").onclick = function () {
+        document.body.style.backgroundImage = "url(黄色背景.jpg)";
+    };
+    $("pic3").onclick = function () {
+        document.body.style.backgroundImage = "url(灰色背景.jpg)";
+    };
+</script>

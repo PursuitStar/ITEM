@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            perspective: 500px;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        .box {
+            margin: 200px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: all 10s;
+        }
+        .box>div {
+            text-align: center;
+            font: 80px/100px "Microsoft YaHei";
+            color: white;
+            position: absolute;
+        }
+
+       .div1 {
+            transform: rotateX(90deg);
+            transform-origin: top;
+            background-color: red;
+        }
+
+        .div2 {
+            background-color: orange;
+            transform: rotateX(-90deg);
+            transform-origin: bottom;
+        }
+        .div3 {
+            transform-origin: left;
+            background-color: yellow;
+            transform: rotateY(-90deg);
+        }
+
+        .div4 {
+            transform-origin: right;
+            background-color: green;
+            transform: rotateY(90deg);
+        }
+        .div5 {
+            background-color: blue;
+            transform: rotateY(180deg);
+        }
+        .div6 {
+            background-color: purple;
+            transform: translateZ(100px);
+        }
+
+        .box:hover {
+            transform: rotateX(2000deg) rotateY(1000deg) rotateZ(2000deg) matrix(1,0,0,1,500,150);
+        }
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="div1">1</div>
+    <div class="div2">2</div>
+    <div class="div3">3</div>
+    <div class="div4">4</div>
+    <div class="div5">5</div>
+    <div class="div6">6</div>
+</div>
+</body>
+</html>
